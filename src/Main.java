@@ -12,6 +12,8 @@ public class Main{
         tetoCustomer.customerType=2;
         tetoCustomer.gallonsUsed=18000;
         mikuCustomer.name="Miku";
+        mikuCustomer.customerType=1;
+        mikuCustomer.gallonsUsed=9000;
 
         System.out.println(tetoCustomer.name);
         tetoCustomer.calculateBill();
