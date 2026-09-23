@@ -19,21 +19,59 @@ public class Customer {
     final int TIER2_CUTOFF = 13000;
     final double GALLONS = 1000.0;
 
-    String name;
-    int gallonsUsed;
-    int customerType; // 1 is single-family, 2 is a duplex
-    double bill;
+    private String name;
+    private int gallonsUsed;
+    private int customerType; // 1 is single-family, 2 is a duplex
+    private double bill;
 
+    // GETTER allows classes to get information
+    public int getGallonsUsed(){
+        return gallonsUsed;
+    }
+    public double getBill() {
+        return bill;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCustomerType() {
+        return customerType;
+    }
+
+    // SETTER allows for us to set a value
+    public void setGallonsUsed(int gallonsUsed){
+        if(gallonsUsed<0){
+            System.out.println("Gallons must be positive.");
+        }
+        else {
+            this.gallonsUsed = gallonsUsed;
+        }
+    }
+
+    public void setCustomerType(int customerType) {
+        this.customerType = customerType;
+    }
+
+    public void setName(String name) {
+        if(name.equals("")||name==null){
+            System.out.println("Name can not be empty");
+        }
+        else {
+            this.name = name;
+        }
+    }
     public void customerInput(){
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         try {
             System.out.print("Enter Customer Name: ");
-            name = bufferedReader.readLine();
+            setName(bufferedReader.readLine());
             System.out.print("Enter Customer Type (1: SingleFamily, 2: Duplex): ");
             customerType = Integer.parseInt(bufferedReader.readLine());
             System.out.print("Enter gallons used: ");
-            gallonsUsed = Integer.parseInt(bufferedReader.readLine());
+            setGallonsUsed(Integer.parseInt(bufferedReader.readLine()));
         } catch (
                 IOException e) {
             throw new RuntimeException(e);
