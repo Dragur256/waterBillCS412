@@ -189,5 +189,14 @@ class CustomerTest {
     @Test
     public void testEmptyName(){
         Customer customer=new Customer();
+        customer.setName("");
+        assertNull(customer.getName());
+    }
+
+    @Test
+    public void testNegativeGallons(){
+        Customer customer=new Customer();
+        customer.setGallonsUsed(-10);
+        assertEquals(0.0,customer.getGallonsUsed());
     }
 }
