@@ -24,6 +24,15 @@ public class Customer {
     private int customerType; // 1 is single-family, 2 is a duplex
     private double bill;
 
+    public Customer(){
+        System.out.println("Hello!");
+    }
+    public Customer(String name,int gallonsUsed,int customerType){
+        setName(name);
+        setGallonsUsed(gallonsUsed);
+        setCustomerType(customerType);
+    }
+
     // GETTER allows classes to get information
     public int getGallonsUsed(){
         return gallonsUsed;
