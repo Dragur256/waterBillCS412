@@ -11,16 +11,35 @@ class CustomerTest {
     @Test
 
     public void testSingleFamilyTier1() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(6000);
         customer.calculateBill();
         assertEquals(25.45, customer.getBill(), 0.01);
     }
+    @Test
+    public void testSingleFamilyTier1LowIncome(){
+        SingleFamily customer=new SingleFamily();
+        customer.setGallonsUsed(6000);
+        customer.setLowIncome(true);
+        customer.calculateBill();
+        customer.applyDiscount();
 
+        assertEquals(22.90,customer.getBill(),0.01);
+    }
+    @Test
+    public void testSingleFamilyTier1NotLowIncome() {
+        SingleFamily customer = new SingleFamily();
+        customer.setGallonsUsed(6000);
+        customer.setLowIncome(false);
+        customer.calculateBill();
+        customer.applyDiscount();
+
+        assertEquals(25.45, customer.getBill(), 0.01);
+    }
     @Test
     public void testSingleFamily_Below7000() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(6999);
         customer.calculateBill();
@@ -29,7 +48,7 @@ class CustomerTest {
 
     @Test
     public void testSingleFamily_At7000() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(7000);
         customer.calculateBill();
@@ -41,7 +60,7 @@ class CustomerTest {
 //
     @Test
     public void testSingleFamilyTier2() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(9000);
         customer.calculateBill();
@@ -50,7 +69,7 @@ class CustomerTest {
 
     @Test
     public void testSingleFamily_Above7000() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(7001);
         customer.calculateBill();
@@ -59,7 +78,7 @@ class CustomerTest {
 
     @Test
     public void testSingleFamily_Below13000() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(12999);
         customer.calculateBill();
@@ -68,7 +87,7 @@ class CustomerTest {
 
     @Test
     public void testSingleFamily_At13000() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(13000);
         customer.calculateBill();
@@ -80,7 +99,7 @@ class CustomerTest {
 //
     @Test
     public void testSingleFamilyTier3() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(16000);
         customer.calculateBill();
@@ -89,7 +108,7 @@ class CustomerTest {
 
     @Test
     public void testSingleFamily_Above13000() {
-        Customer customer = new Customer();
+        Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(13001);
         customer.calculateBill();
@@ -101,7 +120,7 @@ class CustomerTest {
 //
     @Test
     public void testDuplexTier1() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(6000);
         customer.calculateBill();
@@ -110,7 +129,7 @@ class CustomerTest {
 
     @Test
     public void testDuplex_Below9000() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(8999);
         customer.calculateBill();
@@ -119,7 +138,7 @@ class CustomerTest {
 
     @Test
     public void testDuplex_At9000() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(9000);
         customer.calculateBill();
@@ -131,7 +150,7 @@ class CustomerTest {
 //
     @Test
     public void testDuplexTier2() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(10000);
         customer.calculateBill();
@@ -140,7 +159,7 @@ class CustomerTest {
 
     @Test
     public void testDuplex_Above9000() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(9001);
         customer.calculateBill();
@@ -149,7 +168,7 @@ class CustomerTest {
 
     @Test
     public void testDuplex_Below13000() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(12999);
         customer.calculateBill();
@@ -158,7 +177,7 @@ class CustomerTest {
 
     @Test
     public void testDuplex_At13000() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(13000);
         customer.calculateBill();
@@ -170,7 +189,7 @@ class CustomerTest {
 //
     @Test
     public void testDuplexTier3() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(16000);
         customer.calculateBill();
@@ -179,7 +198,7 @@ class CustomerTest {
 
     @Test
     public void testDuplex_Above13000() {
-        Customer customer = new Customer();
+        Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(13001);
         customer.calculateBill();
@@ -188,14 +207,14 @@ class CustomerTest {
 
     @Test
     public void testEmptyName(){
-        Customer customer=new Customer();
+        Customer customer=new Duplex();
         customer.setName("");
         assertNull(customer.getName());
     }
 
     @Test
     public void testNegativeGallons(){
-        Customer customer=new Customer();
+        Customer customer=new SingleFamily();
         customer.setGallonsUsed(-10);
         assertEquals(0.0,customer.getGallonsUsed());
     }
