@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public abstract class Customer {
 
@@ -10,7 +11,9 @@ public abstract class Customer {
     private String name;
     private int gallonsUsed;
     private int customerType; // 1 is single-family, 2 is a duplex
-    protected double bill;
+    private double bill;
+
+    static private ArrayList<Customer> allCustomers=new ArrayList<Customer>();
 
     public Customer(){
         System.out.println("Hello!");
@@ -27,6 +30,10 @@ public abstract class Customer {
     }
     public double getBill() {
         return bill;
+    }
+
+    public static ArrayList<Customer> getAllCustomers(){
+        return allCustomers;
     }
 
     public String getName() {
@@ -59,6 +66,11 @@ public abstract class Customer {
             this.name = name;
         }
     }
+
+    protected void registerCustomer(){
+        allCustomers.add(this);
+    }
+
     public void customerInput(){
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -79,5 +91,27 @@ public abstract class Customer {
         System.out.println("Bill total: " + bill);
     }
 
-    public abstract void calculateBill();
+    protected abstract double calculateBill();
+
+    public void generateBill(){
+        double calculated=calculateBill();
+        double finalBill=applyDiscount(calculated);
+        if(finalBill<0){
+            System.out.println("Bill must be positive.");
+        }
+        this.bill=finalBill;
+        registerCustomer();
+    }
+
+    protected double applyDiscount(double calculatedBill){
+        return calculatedBill;
+    }
+
+    @Override
+    public String toString(){
+        return "Name "+getName();
+    }
+    static public Customer getHighestCustomer(){
+        return null;
+    }
 }

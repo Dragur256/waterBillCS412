@@ -14,7 +14,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(6000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(25.45, customer.getBill(), 0.01);
     }
     @Test
@@ -22,8 +22,8 @@ class CustomerTest {
         SingleFamily customer=new SingleFamily();
         customer.setGallonsUsed(6000);
         customer.setLowIncome(true);
-        customer.calculateBill();
-        customer.applyDiscount();
+        customer.generateBill();
+        //customer.applyDiscount();
 
         assertEquals(22.90,customer.getBill(),0.01);
     }
@@ -32,8 +32,8 @@ class CustomerTest {
         SingleFamily customer = new SingleFamily();
         customer.setGallonsUsed(6000);
         customer.setLowIncome(false);
-        customer.calculateBill();
-        customer.applyDiscount();
+        customer.generateBill();
+        //customer.applyDiscount();
 
         assertEquals(25.45, customer.getBill(), 0.01);
     }
@@ -42,7 +42,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(6999);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(27.497, customer.getBill(), 0.01);
     }
 
@@ -51,7 +51,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(7000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(27.490, customer.getBill(), 0.01);
     }
 
@@ -63,7 +63,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(9000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(32.190, customer.getBill(), 0.01);
     }
 
@@ -72,7 +72,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(7001);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(27.492, customer.getBill(), 0.01);
     }
 
@@ -81,7 +81,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(12999);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(41.58, customer.getBill(), 0.01);
     }
 
@@ -90,7 +90,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(13000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(41.59, customer.getBill(), 0.01);
     }
 
@@ -102,7 +102,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(16000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(49.69, customer.getBill(), 0.01);
     }
 
@@ -111,7 +111,7 @@ class CustomerTest {
         Customer customer = new SingleFamily();
         customer.setCustomerType(1);
         customer.setGallonsUsed(13001);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(41.59, customer.getBill(), 0.01);
     }
 
@@ -123,7 +123,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(6000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(27.33, customer.getBill(), 0.01);
     }
 
@@ -132,7 +132,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(8999);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(33.23, customer.getBill(), 0.01);
     }
 
@@ -141,7 +141,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(9000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(33.24, customer.getBill(), 0.01);
     }
 
@@ -153,7 +153,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(10000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(35.50, customer.getBill(), 0.01);
     }
 
@@ -162,7 +162,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(9001);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(33.24, customer.getBill(), 0.01);
     }
 
@@ -171,7 +171,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(12999);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(42.27, customer.getBill(), 0.01);
     }
 
@@ -180,7 +180,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(13000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(42.28, customer.getBill(), 0.01);
     }
 
@@ -192,7 +192,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(16000);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(50.08, customer.getBill(), 0.01);
     }
 
@@ -201,7 +201,7 @@ class CustomerTest {
         Customer customer = new Duplex();
         customer.setCustomerType(2);
         customer.setGallonsUsed(13001);
-        customer.calculateBill();
+        customer.generateBill();
         assertEquals(42.28, customer.getBill(), 0.01);
     }
 

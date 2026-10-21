@@ -19,13 +19,15 @@ public class SingleFamily extends Customer{
         this.lowIncome=lowIncome;
     }
 
-    public void applyDiscount(){
+    @Override
+    public double applyDiscount(double bill){
         if(lowIncome){
             bill*=0.9;
         }
+        return bill;
     }
-
-    public void calculateBill() {
+    public double calculateBill() {
+        double bill;
         if (getGallonsUsed() <= SINGLE_TIER1) {
             bill = SINGLE_BASE + getGallonsUsed() * (SINGLE_TIER1_COST / GALLONS);
         } else if (getGallonsUsed() <= TIER2_CUTOFF) {
@@ -38,6 +40,7 @@ public class SingleFamily extends Customer{
                     + (getGallonsUsed() - TIER2_CUTOFF) * (SINGLE_TIER3_COST /
                     GALLONS);
         }
+        return bill;
     }
 
     @Override

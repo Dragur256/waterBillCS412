@@ -1,6 +1,6 @@
 public class TownHouse extends Customer{
     @Override
-    public void calculateBill() {
-
+    public double calculateBill() {
+        return 0.0;
     }
 }
