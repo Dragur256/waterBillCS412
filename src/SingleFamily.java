@@ -12,6 +12,15 @@ public class SingleFamily extends Customer{
 
     private boolean lowIncome;
 
+    public SingleFamily(){
+        super();
+        System.out.println("I am a single-family!");
+    }
+    public SingleFamily(String name,int gallonsUsed,boolean lowIncome){
+        super(name,gallonsUsed);
+        setLowIncome(lowIncome);
+    }
+
     public boolean isLowIncome() {
         return lowIncome;
     }

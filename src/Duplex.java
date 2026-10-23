@@ -7,7 +7,12 @@ public class Duplex extends Customer{
     final double DUPLEX_TIER3_COST = 2.60;
 
     public Duplex(){
+        super();
         System.out.println("I am a duplex!");
+    }
+    public Duplex(String name,int gallonsUsed){
+        setName(name);
+        setGallonsUsed(gallonsUsed);
     }
 
     public double calculateBill() {

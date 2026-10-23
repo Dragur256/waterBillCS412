@@ -18,10 +18,9 @@ public abstract class Customer {
     public Customer(){
         System.out.println("Hello!");
     }
-    public Customer(String name,int gallonsUsed,int customerType){
+    public Customer(String name,int gallonsUsed){
         setName(name);
         setGallonsUsed(gallonsUsed);
-        setCustomerType(customerType);
     }
 
     // GETTER allows classes to get information

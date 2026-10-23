@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Main{
     public static void main(String[] args) {
-        Customer sf=new SingleFamily();
-        sf.customerInput();
+        Customer sf=new SingleFamily("alice",6000,false);
         sf.generateBill();
+        sf.printBill();
 
         Duplex dp=new Duplex();
         dp.customerInput();
