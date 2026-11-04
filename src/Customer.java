@@ -2,8 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
-public abstract class Customer {
+public abstract class Customer implements Comparable<Customer> {
 
     final int TIER2_CUTOFF = 13000;
     final double GALLONS = 1000.0;
@@ -64,6 +65,15 @@ public abstract class Customer {
         else {
             this.name = name;
         }
+    }
+
+    public static void sortByBill(){
+        Collections.sort(getAllCustomers());
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return Double.compare(this.getBill(),o.getBill());
     }
 
     protected void registerCustomer(){
