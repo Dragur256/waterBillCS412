@@ -218,4 +218,10 @@ class CustomerTest {
         customer.setGallonsUsed(-10);
         assertEquals(0.0,customer.getGallonsUsed());
     }
+    @Test
+    public void testGetHighestCustomerNoCustomers(){
+        Customer.getAllCustomers().clear();
+
+        assertThrows(NoCustomerException.class,Customer::getHighestCustomer);
+    }
 }

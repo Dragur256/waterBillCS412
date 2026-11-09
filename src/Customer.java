@@ -3,8 +3,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
-public abstract class Customer implements Comparable<Customer> {
+public abstract class Customer{
 
     final int TIER2_CUTOFF = 13000;
     final double GALLONS = 1000.0;
@@ -68,12 +69,8 @@ public abstract class Customer implements Comparable<Customer> {
     }
 
     public static void sortByBill(){
-        Collections.sort(getAllCustomers());
-    }
-
-    @Override
-    public int compareTo(Customer o) {
-        return Double.compare(this.getBill(),o.getBill());
+        //Collections.sort(getAllCustomers());
+        getAllCustomers().sort(Comparator.comparingDouble(Customer::getBill));
     }
 
     protected void registerCustomer(){
@@ -120,7 +117,37 @@ public abstract class Customer implements Comparable<Customer> {
     public String toString(){
         return "Name "+getName();
     }
-    static public Customer getHighestCustomer(){
-        return null;
+
+    public static void statReport(){
+        try {
+            System.out.println(getHighestCustomer());
+        } catch(NoCustomerException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void awardLoyaltyReward(){
+        try {
+            System.out.println(getHighestCustomer());
+        } catch(NoCustomerException e){
+            System.out.println("There are no rewards to give");
+        }
+    }
+
+    static public Customer getHighestCustomer() throws NoCustomerException, IllegalStateException {
+        if(getAllCustomers().isEmpty()) {
+            throw new NoCustomerException("No customers exist");
+        }
+        try {
+            Customer max = getAllCustomers().get(0);
+            for (Customer c : getAllCustomers()) {
+                if (c.getBill() > max.getBill()) {
+                    max = c;
+                }
+            }
+            return max;
+        }catch(IndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }
